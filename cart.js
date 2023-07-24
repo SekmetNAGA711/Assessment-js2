@@ -33,7 +33,7 @@ const cart = [
     }
 ]
 
-//CODE HERE
+// //CODE HERE
 
 const summedPrice = cart.reduce((acc, item)=>(acc + item.price),0)
 
@@ -55,10 +55,18 @@ console.log(summedPrice)
 */
 
 //CODE HERE
-function calcFinalPrice(cartTotal, couponValue, tax) {
-    
+
+const cartTotal = cart.reduce(function(acc,curr){
+     return acc + curr.price
+},0)
+
+
+function calcFinalPrice(total, tax, couponValue) {
+    return (total * tax) + total - couponValue
+     
 }
 
+console.log(calcFinalPrice(cartTotal, 0.06, 5))
 
 //////////////////PROBLEM 3////////////////////
 /*  
@@ -82,8 +90,26 @@ function calcFinalPrice(cartTotal, couponValue, tax) {
 
 /*
     TEXT ANSWER HERE
+Making an online order from a resturant
 
-*/
+1. customers name (first and last): (String)
+ This will be a string so we can take in a customer name.
+
+2. customer email: (String) 
+This will be a string so we can send the customer a confirmation of their order. Customer email is also helpful for matching the customer's name with the email and order, ensuring we have the right person.
+
+3. customer address: (String) 
+Customer address will be a string to take in the customer's address so we know where to send their order.
+
+4. payment card type: (tag array)
+The payment card type will be a tag array. The customer will select Mastercard, Visa, Discover, or American Express so that we can match the card number for processing.
+
+5. card Number: (Number)
+Card Number will be a number to take in the customer's credit card number.
+
+6. delivery zip code: (array of numbers)
+Delivery zip code will be an array of numbers of zip codes that are within our delivery scope. The customer will enter their zip code. If their zip matches our delivery scope, we can deliver.
+*/ 
 
 /*
     Now, create a customer object following your own
@@ -91,3 +117,11 @@ function calcFinalPrice(cartTotal, couponValue, tax) {
 */
 
 //CODE HERE
+let onlineDelivery = {
+    firstandLastName: "Emma Peterson",
+    customerEmail: "bena.ao310@gmail.com",
+    customerAddress: "24787 spring mill dr",
+    paymentCardTypeTags: ['Mastercard', 'Visa', 'Discover', 'American express' ],
+    cardNumber: 98084837567645,
+    deliveryZipcode: [22033, 20105, 20177, 22038,]
+}
